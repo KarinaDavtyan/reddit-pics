@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
+import moment from 'moment';
+
 export default class ListItem extends React.Component {
 
   render() {
@@ -8,19 +10,14 @@ export default class ListItem extends React.Component {
     return (
         <View style={styles.container}>
         <Text>
-          {reddit.title}
+          {reddit.title} posted by {reddit.author}
         </Text>
         <Text>
-          {reddit.author}
+          {moment.unix(reddit.created_utc).fromNow()}
         </Text>
         <Text>
           Score {reddit.score}
-        </Text>
-        <Text>
           Comments {reddit.num_comments}
-        </Text>
-        <Text>
-          Time UTC {reddit.created_utc}
         </Text>
         <Image
           style={{width: 50, height: 50}}
