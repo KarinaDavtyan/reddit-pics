@@ -4,13 +4,15 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'GET_REDITS_REQUEST':
-    console.warn(action);
+    case 'GET_REDDITS_REQUEST':
+    // console.warn(action);
     return state;
 
-    case 'GET_REDITS_SUCCESS':
-    console.warn(action);
-    return state;
+    case 'GET_REDDITS_SUCCESS':
+    return {
+      ...state,
+      reddits: action.data.data.children,
+      }
     break;
 
     default:

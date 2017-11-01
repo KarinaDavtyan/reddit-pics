@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -7,17 +7,15 @@ import { getReddits } from './actions';
 
 class List extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.props.getReddits()
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          Hello World!
-        </Text>
+        <Button
+          onPress={() => this.props.getReddits()}
+          title="Refresh the state"
+          color="blue"
+        />
       </View>
     );
   }

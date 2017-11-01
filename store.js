@@ -4,6 +4,6 @@ import logger from './middlewares/logger';
 import api from './middlewares/api';
 import reducers from './reducers';
 
-const store = createStore(reducers, applyMiddleware(logger, api));
+const store = createStore(reducers, applyMiddleware(api, logger));
 
 export default store;
