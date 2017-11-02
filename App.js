@@ -7,7 +7,7 @@ import store from './store';
 import List from './List';
 
 export default class App extends React.Component {
-
+  
   render() {
     return (
       <Provider store={store}>

@@ -8,22 +8,18 @@ import ListItem from './ListItem';
 
 class List extends React.Component {
 
+  constructor(props) {
+    super(props),
+    this.props.getReddits();
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          onPress={() => {
-            this.props.getReddits()
-            if (this.props.reddits.length >0) {
-              console.log('here',this.props);
-            } else {
-              console.log('its happening', this.props.reddits);
-            }
-          }}
-          title="Refresh the state"
-          color="blue"
-        />
         <FlatList
+          style={styles.flatList}
+          refreshing={this.props.refreshing}
+          onRefresh={() => this.props.getReddits()}
           data={this.props.reddits}
           renderItem={({item}) => {
             return (
@@ -40,14 +36,16 @@ class List extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    paddingTop: 25
+  }
 });
 
 const mapStateToProps = (state) => ({
-  reddits: state.reddits
+  reddits: state.reddits,
+  refreshing: state.refreshing,
 })
 
 const mapDispatchToProps = (dispatch) => ({
