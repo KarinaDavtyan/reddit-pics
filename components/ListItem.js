@@ -1,17 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { NavigationActions } from 'react-navigation'
+import { withNavigation } from 'react-navigation'
 import moment from 'moment';
 
-export default class ListItem extends React.Component {
+class ListItem extends React.Component {
+
+  setNativeProps = (nativeProps) => {
+    this._root.setNativeProps(nativeProps);
+  }
 
   render() {
     let reddit = this.props.reddit.data;
     let poster = ((/\.(gif|jpg|jpeg|tiff|png)$/i).test(reddit.thumbnail))
                   ? reddit.thumbnail
                   : 'https://cheers2sun.com/images/img.png';
+    const { navigate } = this.props.navigation;
     return (
-        <View style={{ borderRadius: 5, backgroundColor: 'white', marginBottom: 5, padding: 5}}>
+      <TouchableHighlight
+        onPress={() => navigate('WebViewScreen', {path: reddit.url})}
+      >
+        <View
+          style={{ borderRadius: 5, backgroundColor: 'white', marginBottom: 5, padding: 5}}
+          ref={component => this._root = component} {...this.props}
+        >
           <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'flex-start'}}>
             <Image
               style={{width: 100, height: 100}}
@@ -34,6 +46,7 @@ export default class ListItem extends React.Component {
             </Text>
           </View>
         </View>
+      </TouchableHighlight>
     );
   }
 }
@@ -46,3 +59,5 @@ const styles = StyleSheet.create({
     borderColor: '#d6d7da',
   },
 });
+
+export default withNavigation(ListItem);

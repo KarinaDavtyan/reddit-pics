@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList} from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -12,14 +12,13 @@ class List extends React.Component {
     super(props),
     this.props.getReddits();
   }
-
+  static navigationOptions = {
+    title: 'New Reddits',
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          I am here
-        </Text>
         <FlatList
           style={styles.flatList}
           refreshing={this.props.refreshing}
@@ -39,12 +38,8 @@ class List extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     backgroundColor: '#FAFAFA',
     paddingHorizontal: 5,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // paddingTop: 25
   }
 });
 

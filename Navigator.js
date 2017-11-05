@@ -3,29 +3,25 @@ import { StackNavigator } from 'react-navigation';
 import { StyleSheet, Text, View } from 'react-native';
 
 import List from './screens/List';
+import WebView from './screens/WebView';
 
 const NewListScreen = () => (
-  <View style={{   }}>
-    <Text>
-      hey
-    </Text>
+  <View>
     <List />
   </View>
 );
 
-// const WebViewScreen = () => (
-//   <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-//     <Text>WebView is here</Text>
-//   </View>
-// );
+const WebViewScreen = () => (
+  <WebView />
+);
 
 const RootNavigator = StackNavigator({
   Home: {
     screen: NewListScreen,
   },
-  // Details: {
-  //   screen: WebViewScreen,
-  // },
+  WebViewScreen: {
+    screen: WebViewScreen,
+  },
 });
 
 export default RootNavigator;
