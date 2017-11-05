@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 
 import {connect} from 'react-redux';
 
-import { getReddits } from './actions';
-import ListItem from './ListItem';
+import { getReddits } from '../actions';
+import ListItem from '../components/ListItem';
 
 class List extends React.Component {
 
@@ -13,9 +13,13 @@ class List extends React.Component {
     this.props.getReddits();
   }
 
+
   render() {
     return (
       <View style={styles.container}>
+        <Text>
+          I am here
+        </Text>
         <FlatList
           style={styles.flatList}
           refreshing={this.props.refreshing}
@@ -35,11 +39,12 @@ class List extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 25
+    // flex: 1,
+    backgroundColor: '#FAFAFA',
+    paddingHorizontal: 5,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // paddingTop: 25
   }
 });
 
