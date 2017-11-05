@@ -19,35 +19,39 @@ class ListItem extends React.Component {
     return (
       <TouchableHighlight
         onPress={() => navigate('WebViewScreen', {path: reddit.url})}
-      >
-        <View
-          style={{ borderRadius: 5, backgroundColor: 'white', marginBottom: 5, padding: 5}}
-          ref={component => this._root = component} {...this.props}
         >
-          <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'flex-start'}}>
-            <Image
-              style={{width: 100, height: 100}}
-              source={{uri: poster}}
-            />
-            <Text>
-              posted by {reddit.author}
-            </Text>
-            <Text>
-              {moment.unix(reddit.created_utc).fromNow()}
-            </Text>
-          </View>
-          <View>
-            <Text numberOfLines={2} ellipsizeMode='tail' style={{fontWeight: 'bold', }}>
-              "{reddit.title}"
-            </Text>
-            <Text>
-              {reddit.score} Votes {"\n"}
-              {reddit.num_comments} Comments
-            </Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-    );
+          <View
+            style={{ borderRadius: 5, backgroundColor: 'white', marginBottom: 5, padding: 5, flexDirection: 'row'}}
+            ref={component => this._root = component} {...this.props}
+            >
+              <View style={{width: 100, height: 100}}>
+                <Image
+                  source={{uri: poster}}
+                  style={{width: 100, height: 100}}
+                />
+              </View>
+              <View style={{ flexDirection: 'column', flex: 1, alignContent: 'space-between'}}>
+                <Text style={{alignSelf: "flex-end"}}>
+                  {moment.unix(reddit.created_utc).fromNow()}
+                </Text>
+                <Text numberOfLines={3} textAlign='justify' ellipsizeMode='tail' style={{fontWeight: 'bold', alignSelf: 'center' }}>
+                  {reddit.title}
+                </Text>
+              <View style={{flexDirection: 'row', flex: 1, alignItems: 'flex-end'}}>
+                <Text style={{flex: 0.45}}>
+                  {reddit.author}
+                </Text>
+                <Text style={{flex: 0.2 }}>
+                  {reddit.score} Votes
+                </Text>
+                <Text style={{flex: 0.35}}>
+                  {reddit.num_comments} Comments
+                </Text>
+              </View>
+              </View>
+            </View>
+          </TouchableHighlight>
+        );
   }
 }
 
