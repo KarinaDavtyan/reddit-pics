@@ -2,7 +2,6 @@ import React from 'react';
 import { WebView } from 'react-native';
 import { withNavigation } from 'react-navigation'
 
-
 class WebViewScreen extends React.Component {
 
   render() {
@@ -13,6 +12,7 @@ class WebViewScreen extends React.Component {
       />
     );
   }
+
 }
 
 export default withNavigation(WebViewScreen)

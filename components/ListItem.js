@@ -21,7 +21,6 @@ class ListItem extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => navigate('WebViewScreen', {path: reddit.url})}
-
       >
         <View
           style={styles.viewListItem}
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontWeight: 'bold',
-    // alignSelf: 'center',
     alignItems: 'flex-start',
     paddingVertical: 10,
     paddingHorizontal: 5

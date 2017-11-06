@@ -38,7 +38,6 @@ const NewRootNavigator = StackNavigator({
     }
   },
 });
-
 const ControversialRootNavigator = StackNavigator({
   Controversial: {
     screen: ControversialListScreen,
