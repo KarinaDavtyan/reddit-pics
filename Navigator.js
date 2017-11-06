@@ -24,7 +24,7 @@ const WebViewScreen = () => (
   <WebView />
 );
 
-const NewRootNavigator = StackNavigator({
+const NewViewScreenNavigator = StackNavigator({
   New: {
     screen: NewListScreen,
     navigationOptions: {
@@ -38,7 +38,8 @@ const NewRootNavigator = StackNavigator({
     }
   },
 });
-const ControversialRootNavigator = StackNavigator({
+
+const ControversialViewScreenNavigator = StackNavigator({
   Controversial: {
     screen: ControversialListScreen,
     navigationOptions: {
@@ -52,7 +53,8 @@ const ControversialRootNavigator = StackNavigator({
     }
   },
 });
-const TopRootNavigator = StackNavigator({
+
+const TopViewScreenNavigator = StackNavigator({
   Top: {
     screen: TopListScreen,
     navigationOptions: {
@@ -66,7 +68,8 @@ const TopRootNavigator = StackNavigator({
     }
   },
 });
-const HotRootNavigator = StackNavigator({
+
+const HotViewScreenNavigator = StackNavigator({
   Hot: {
     screen: HotListScreen,
     navigationOptions: {
@@ -83,25 +86,25 @@ const HotRootNavigator = StackNavigator({
 
 const MainScreenNavigator = DrawerNavigator({
   Home: {
-    screen: NewRootNavigator,
+    screen: NewViewScreenNavigator,
     navigationOptions: {
       drawerLabel: 'New',
     }
   },
   Hot: {
-    screen: HotRootNavigator,
+    screen: HotViewScreenNavigator,
     navigationOptions: {
       drawerLabel: 'Hot'
     }
   },
   Top: {
-    screen: TopRootNavigator,
+    screen: TopViewScreenNavigator,
     navigationOptions: {
       drawerLabel: 'Top'
     }
   },
   Controversial: {
-    screen: ControversialRootNavigator,
+    screen: ControversialViewScreenNavigator,
     navigationOptions: {
       drawerLabel: 'Controversial'
     }
