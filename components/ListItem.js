@@ -11,57 +11,97 @@ class ListItem extends React.Component {
   }
 
   render() {
+
     let reddit = this.props.reddit.data;
     let poster = ((/\.(gif|jpg|jpeg|tiff|png)$/i).test(reddit.thumbnail))
                   ? reddit.thumbnail
                   : 'https://cheers2sun.com/images/img.png';
     const { navigate } = this.props.navigation;
+
     return (
       <TouchableHighlight
         onPress={() => navigate('WebViewScreen', {path: reddit.url})}
+      >
+        <View
+          style={styles.viewListItem}
+          ref={component => this._root = component} {...this.props}
         >
-          <View
-            style={{ borderRadius: 5, backgroundColor: 'white', marginBottom: 5, padding: 5, flexDirection: 'row'}}
-            ref={component => this._root = component} {...this.props}
-            >
-              <View style={{width: 100, height: 100}}>
-                <Image
-                  source={{uri: poster}}
-                  style={{width: 100, height: 100}}
-                />
-              </View>
-              <View style={{ flexDirection: 'column', flex: 1, alignContent: 'space-between'}}>
-                <Text style={{alignSelf: "flex-end"}}>
-                  {moment.unix(reddit.created_utc).fromNow()}
-                </Text>
-                <Text numberOfLines={3} textAlign='justify' ellipsizeMode='tail' style={{fontWeight: 'bold', alignSelf: 'center' }}>
-                  {reddit.title}
-                </Text>
-              <View style={{flexDirection: 'row', flex: 1, alignItems: 'flex-end'}}>
-                <Text style={{flex: 0.45}}>
-                  {reddit.author}
-                </Text>
-                <Text style={{flex: 0.2 }}>
-                  {reddit.score} Votes
-                </Text>
-                <Text style={{flex: 0.35}}>
-                  {reddit.num_comments} Comments
-                </Text>
-              </View>
-              </View>
+          <Image
+            source={{uri: poster}}
+            style={styles.image}
+          />
+          <View style={styles.viewColumn}>
+            <Text style={styles.textTime}>
+              {moment.unix(reddit.created_utc).fromNow()}
+            </Text>
+            <Text
+              numberOfLines={3}
+              textAlign='justify'
+              ellipsizeMode='tail'
+              style={styles.textTitle}>
+              {reddit.title}
+            </Text>
+            <View style={styles.viewBottom}>
+              <Text style={styles.textAuthor}>
+                {reddit.author}
+              </Text>
+              <Text style={styles.textScore}>
+                {reddit.score} Votes
+              </Text>
+              <Text style={styles.textComments}>
+                {reddit.num_comments} Comments
+              </Text>
             </View>
-          </TouchableHighlight>
-        );
+          </View>
+        </View>
+      </TouchableHighlight>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  listItem: {
-    backgroundColor: '#fff',
-    justifyContent: 'space-between',
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
+  viewListItem: {
+    borderRadius: 5,
+    backgroundColor: 'white',
+    marginBottom: 5,
+    padding: 5,
+    flexDirection: 'row'
   },
+  image: {
+    width: 100,
+    height: 100
+  },
+  textTime: {
+    alignSelf: 'flex-end'
+  },
+  textTitle: {
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    alignItems: 'flex-start',
+    paddingVertical: 10
+  },
+  viewColumn: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'space-between'
+  },
+  viewBottom: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'flex-end',
+    paddingLeft: 5
+  },
+  textAuthor: {
+    flex: 0.50
+  },
+  textScore: {
+    flex: 0.2,
+    fontSize: 12
+  },
+  textComments: {
+    flex: 0.35,
+    fontSize: 12
+  }
 });
 
 export default withNavigation(ListItem);
