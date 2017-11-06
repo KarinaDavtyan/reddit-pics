@@ -1,11 +1,11 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 import List from './screens/List';
 import WebView from './screens/WebView';
 
 const NewListScreen = () => (
-  <List />
+  <List url='https://api.reddit.com/r/pics/new.json' />
 );
 
 const WebViewScreen = () => (
@@ -27,4 +27,13 @@ const RootNavigator = StackNavigator({
   },
 });
 
-export default RootNavigator;
+const MainScreenNavigator = DrawerNavigator({
+  Home: {
+    screen: RootNavigator,
+    navigationOptions: {
+      drawerLabel: 'New'
+    }
+  }
+})
+
+export default MainScreenNavigator;

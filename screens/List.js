@@ -3,26 +3,24 @@ import { StyleSheet, View, FlatList} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import { getReddits } from '../actions';
+import { getNewReddits } from '../actions';
 import ListItem from '../components/ListItem';
 
 class List extends React.Component {
 
   constructor(props) {
     super(props),
-    this.props.getReddits();
-  }
-  static navigationOptions = {
-    title: 'New Reddits',
-  }
+    this.props.getReddits(this.props.url);
+   }
 
   render() {
+
     return (
       <View style={styles.container}>
         <FlatList
           style={styles.flatList}
           refreshing={this.props.refreshing}
-          onRefresh={() => this.props.getReddits()}
+          onRefresh={() => this.props.getReddits(this.props.url)}
           data={this.props.reddits}
           renderItem={({item}) => {
             return (
@@ -49,7 +47,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getReddits: () => dispatch(getReddits()),
+  getReddits: (url) => dispatch(getNewReddits(url))
 })
 
 export default connect(

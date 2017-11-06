@@ -77,9 +77,10 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontWeight: 'bold',
-    alignSelf: 'center',
+    // alignSelf: 'center',
     alignItems: 'flex-start',
-    paddingVertical: 10
+    paddingVertical: 10,
+    paddingHorizontal: 5
   },
   viewColumn: {
     flexDirection: 'column',
@@ -93,7 +94,8 @@ const styles = StyleSheet.create({
     paddingLeft: 5
   },
   textAuthor: {
-    flex: 0.50
+    flex: 0.50,
+    fontSize: 12
   },
   textScore: {
     flex: 0.2,
