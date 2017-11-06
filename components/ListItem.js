@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation'
 import { withNavigation } from 'react-navigation'
 import moment from 'moment';
@@ -19,8 +19,9 @@ class ListItem extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => navigate('WebViewScreen', {path: reddit.url})}
+
       >
         <View
           style={styles.viewListItem}
@@ -54,7 +55,7 @@ class ListItem extends React.Component {
             </View>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

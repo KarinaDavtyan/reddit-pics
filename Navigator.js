@@ -1,14 +1,11 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { StyleSheet, Text, View } from 'react-native';
 
 import List from './screens/List';
 import WebView from './screens/WebView';
 
 const NewListScreen = () => (
-  <View>
-    <List />
-  </View>
+  <List />
 );
 
 const WebViewScreen = () => (
@@ -16,11 +13,17 @@ const WebViewScreen = () => (
 );
 
 const RootNavigator = StackNavigator({
-  Home: {
+  List: {
     screen: NewListScreen,
+    navigationOptions: {
+      title: 'New Reddits'
+    }
   },
   WebViewScreen: {
     screen: WebViewScreen,
+    navigationOptions: {
+      title: 'Details'
+    }
   },
 });
 
