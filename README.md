@@ -1,4 +1,4 @@
-## Reddit pics React Native App.
+### Reddit pics React Native App.
 
 App shows feed of the Reddit /r pics data represented using FlatList.
 There is Drawer navigator to switch between new, top, hot and controversial feeds.
